@@ -1,17 +1,19 @@
 package cesur.examen.core.common;
 
+import cesur.examen.App;
 import lombok.extern.java.Log;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 /**
  * EXAMEN DE ACCESO A DATOS
  * Diciembre 2023
  *
- * Nombre del alumno:
- * Fecha:
+ * Nombre del alumno: Carlos Bustos
+ * Fecha: 11/12/23
  *
  * No se permite escribir en consola desde las clases DAO, Service y Utils usando System.out.
  * En su lugar, usa log.info(), log.warning() y log.severe() para mostrar información interna
@@ -29,12 +31,18 @@ public class JDBCUtils {
      */
     private static final Connection conn;
 
-    static{
 
+    static{
         try{
 
-            conn = null;
-            /* Make implementation here ...  */
+            var cfg = new Properties();
+            cfg.load(JDBCUtils.class.getClassLoader().getResourceAsStream("db.properties"));
+
+            String url = cfg.getProperty("url");
+            String user = cfg.getProperty("user");
+            String password = cfg.getProperty("password");
+
+            conn = DriverManager.getConnection(url, user, password);
 
             if(conn==null) log.info("JDBCUtils Not implemented yet!");
             else log.info("Succesfully connected!");

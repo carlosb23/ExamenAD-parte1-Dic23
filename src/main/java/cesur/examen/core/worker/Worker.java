@@ -9,8 +9,8 @@ import java.util.Date;
  * EXAMEN DE ACCESO A DATOS
  * Diciembre 2023
  *
- * Nombre del alumno:
- * Fecha:
+ * Nombre del alumno: Carlos Bustos
+ * Fecha: 11/12/23
  */
 @Data
 public class Worker implements Serializable {
